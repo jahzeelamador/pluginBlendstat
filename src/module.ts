@@ -92,9 +92,9 @@ class BlendStatCtrl extends MetricsPanelCtrl {
     valueName: 'avg',
     blendName: 'total',
     prefixFontSize: '50%',
-    valueFontSize: '80%',
+    valueFontSize: '100%',
     postfixFontSize: '50%',
-    thresholds: '',
+    thresholds: '10,100,1000,10000',
     colorBackground: false,
     colorValue: false,
     colors: ['#299c46', 'rgba(237, 129, 40, 0.89)', '#d44a3a'],
@@ -127,6 +127,23 @@ class BlendStatCtrl extends MetricsPanelCtrl {
 
     this.onSparklineColorChange = this.onSparklineColorChange.bind(this);
     this.onSparklineFillChange = this.onSparklineFillChange.bind(this);
+
+    // Insertar logo
+
+    let image = new Image(75);
+    image.src = "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
+    image.style.transform = 'translateY(-35px)';
+    image.id = 'logo';
+
+    const panelContents = document.getElementsByClassName('panel-content');
+    for (let i = 0; i < panelContents.length; i++) {
+      if (document.getElementById('logo')){
+        document.getElementById('logo').parentElement.removeChild(document.getElementById('logo'));
+        };
+        panelContents.item(i).style.backgroundColor = '#000';
+        panelContents.item(i).appendChild(image);  
+    };
+        
   }
 
   onInitEditMode() {
@@ -569,12 +586,12 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       });
 
       const bgColor = config.bootData.user.lightTheme ? 'rgb(230,230,230)' : 'rgb(38,38,38)';
-
-      const fontScale = parseInt(panel.valueFontSize, 10) / 100;
+      //Ajusta el fontSize dentro del Gauge
+      const fontScale = parseInt(panel.valueFontSize, 7) / 100;
       const fontSize = Math.min(dimension / 5, 100) * fontScale;
       // Reduce gauge width if threshold labels enabled
-      const gaugeWidthReduceRatio = panel.gauge.thresholdLabels ? 1.5 : 1;
-      const gaugeWidth = Math.min(dimension / 6, 60) / gaugeWidthReduceRatio;
+      const gaugeWidthReduceRatio = panel.gauge.thresholdLabels ? 2.5 : 1;
+      const gaugeWidth = Math.min(dimension / 4, 60) / gaugeWidthReduceRatio;
       const thresholdMarkersWidth = gaugeWidth / 5;
       const thresholdLabelFontSize = fontSize / 2.5;
 
@@ -582,6 +599,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
         series: {
           gauges: {
             gauge: {
+                //Ajustar el tamano y espacio del minValue y maxValue
               min: panel.gauge.minValue,
               max: panel.gauge.maxValue,
               background: { color: bgColor },
@@ -597,7 +615,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
               values: thresholds,
               label: {
                 show: panel.gauge.thresholdLabels,
-                margin: thresholdMarkersWidth + 1,
+                margin: thresholdMarkersWidth + 5,
                 font: { size: thresholdLabelFontSize },
               },
               show: panel.gauge.thresholdMarkers,

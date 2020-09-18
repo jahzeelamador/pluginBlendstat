@@ -1,7 +1,7 @@
 {
   "type": "panel",
-  "name": "Blendstat",
-  "id": "farski-blendstat-panel",
+  "name": "Blendstat_New",
+  "id": "farski-blendstat-panel_new",
 
   "info": {
     "description": "Blendstat Panel for Grafana",
@@ -11,8 +11,8 @@
     },
     "keywords": ["blendstat", "grafana", "panel"],
     "logos": {
-      "small": "img/icn-blendstat-panel.svg",
-      "large": "img/icn-blendstat-panel.svg"
+      "small": "img/numbers(1).svg",
+      "large": "img/numbers(1).svg"
     },
     "version": "1.0.2",
     "updated": "2019-11-11"

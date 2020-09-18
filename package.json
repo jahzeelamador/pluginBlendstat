@@ -13,9 +13,9 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-systemjs-builder": "^1.0.0",
     "grunt-tslint": "^5.0.2",
-    "jest": "^23.6.0",
+    "jest": "^26.4.2",
     "load-grunt-tasks": "^4.0.0",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^26.3.0",
     "tslint": "^5.11.0"
   },
   "dependencies": {
