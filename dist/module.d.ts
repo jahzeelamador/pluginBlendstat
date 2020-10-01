@@ -1,9 +1,9 @@
 /// <reference path="../node_modules/grafana-sdk-mocks/app/headers/common.d.ts" />
-import 'jquery.flot';
-import './lib/flot/jquery.flot.gauge';
-import 'jquery.flot.time';
-import 'jquery.flot.crosshair';
-import { MetricsPanelCtrl } from 'app/plugins/sdk';
+import "jquery.flot";
+import "./lib/flot/jquery.flot.gauge";
+import "jquery.flot.time";
+import "jquery.flot.crosshair";
+import { MetricsPanelCtrl } from "app/plugins/sdk";
 declare class BlendStatCtrl extends MetricsPanelCtrl {
     private $sanitize;
     private $location;

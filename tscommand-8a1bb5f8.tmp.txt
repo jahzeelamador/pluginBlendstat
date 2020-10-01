@@ -1,0 +1,1 @@
+src/module.ts --emitDecoratorMetadata --declaration --removeComments --inlineSources --inlineSourceMap --experimentalDecorators --rootDir src --skipLibCheck --target ES5 --module system --outDir dist
