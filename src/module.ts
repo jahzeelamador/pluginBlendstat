@@ -699,7 +699,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
         //arcOverEffect: false,
         // label options
         rangeLabel: [panel.gauge.minValue + '', panel.gauge.maxValue + ''],
-        centralLabel: data.valueFormatted + '',
+        centralLabel: data.valueFormatted + '',  //Comentandolo se agrega la ajuga de en medio
         rangeLabelFontSize: panel.gauge.fontSize,
         labelsFont: 'Consolas',
         color: 'white',
