@@ -134,14 +134,28 @@ class BlendStatCtrl extends MetricsPanelCtrl {
 
     
 
-    // Insertar logo
+    // Insert logo
 
+    //Create the element
     let image = new Image(75);
+    // Import the image
     image.src =
       "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
+    // To fix the logo position in the panel
     image.style.transform = "translateY(-35px)";
     image.id = "logo";
+    image.onmouseover = () => {
+      image.src =
+        "https://static.cinepolis.com/img/lg-cinepolis-new.png";
+        image.style.transform = "translateY(-25px)";
+    };
+    image.onmouseleave = () => {
+      image.src =
+      "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
+      image.style.transform = "translateY(-35px)";
+    };
 
+    // Here we 
     const panelContents = document.getElementsByClassName("panel-content");
     for (let i = 0; i < panelContents.length; i++) {
       if (document.getElementById("logo")) {
