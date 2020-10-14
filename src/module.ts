@@ -155,7 +155,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       image.style.transform = "translateY(-35px)";
     };
 
-    // Here we 
+    // Here we create the logo in the panel
     const panelContents = document.getElementsByClassName("panel-content");
     for (let i = 0; i < panelContents.length; i++) {
       if (document.getElementById("logo")) {
@@ -163,6 +163,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
           .getElementById("logo")
           .parentElement.removeChild(document.getElementById("logo"));
       }
+      // Here I change the background color and add the logo.
       panelContents.item(i).style.backgroundColor = "#000";
       panelContents.item(i).appendChild(image);
     
@@ -720,75 +721,12 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       }
       
       //   // // // // Drawing and updating the chart
-      let gaugeChart = GaugeChart.gaugeChart(element, 500, gaugeOptions);
+      let gaugeChart = GaugeChart.gaugeChart(element, height > width? width:height, gaugeOptions);
 
-      
-
-      const bgColor = config.bootData.user.lightTheme
-        ? "rgb(230,230,230)"
-        : "rgb(38,38,38)";
-      //Ajusta el fontSize dentro del Gauge
-      const fontScale = parseInt(panel.valueFontSize, 7) / 100;
-      const fontSize = Math.min(dimension / 5, 100) * fontScale;
-      // Reduce gauge width if threshold labels enabled
-      const gaugeWidthReduceRatio = panel.gauge.thresholdLabels ? 1.5 : 1;
-      const gaugeWidth = Math.min(dimension / 4, 60) / gaugeWidthReduceRatio;
-      const thresholdMarkersWidth = gaugeWidth / 7;
-      const thresholdLabelFontSize = fontSize / 3.2;
-
-      const options = {
-        series: {
-          gauges: {
-            gauge: {
-              //Ajustar el tamano y espacio del minValue y maxValue
-              min: panel.gauge.minValue,
-              max: panel.gauge.maxValue,
-              background: { color: bgColor },
-              border: { color: null },
-              shadow: { show: false },
-              width: gaugeWidth,
-              //  width: "auto",
-            },
-            frame: { show: false },
-            label: { show: false },
-            layout: { margin: 0, thresholdWidth: 0 },
-            cell: { border: { width: 0 } },
-            threshold: {
-              values: thresholds,
-              label: {
-                show: panel.gauge.thresholdLabels,
-                margin: thresholdMarkersWidth + 10,
-                font: { size: thresholdLabelFontSize },
-              },
-              show: panel.gauge.thresholdMarkers,
-              width: thresholdMarkersWidth,
-            },
-            value: {
-              color: panel.colorValue
-                ? getColorForValue(data, data.valueRounded)
-                : null,
-              formatter: () => {
-                return getValueText();
-              },
-              font: {
-                size: fontSize,
-                family: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-              },
-            },
-            show: true,
-          },
-        },
-      };
-
-     // elem.append(plotCanvas);
+                  // elem.append(plotCanvas);
       elem.append(element);
 
-      const plotSeries = {
-        data: [[0, data.value]],
-      };
-
-      $.plot(plotCanvas, [plotSeries], options);
-    }
+     }
 
     function addSparkline() {
       const width = elem.width() + 20;

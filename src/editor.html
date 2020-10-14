@@ -45,25 +45,6 @@ SOFTWARE. -->
       </div>
     </div>
 
-    <!-- <div class="gf-form-inline">
-      <div class="gf-form">
-        <label class="gf-form-label width-6">Prefix</label>
-        <input type="text" class="gf-form-input width-12" ng-model="ctrl.panel.prefix" ng-change="ctrl.render()" ng-model-onblur>
-        <label class="gf-form-label width-6">Font size</label>
-        <div class="gf-form-select-wrapper">
-          <select class="gf-form-input" ng-model="ctrl.panel.prefixFontSize" ng-options="f for f in ctrl.fontSizes" ng-change="ctrl.render()" ng-disabled="!ctrl.canModifyText()"></select>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="gf-form">
-      <label class="gf-form-label width-6">Postfix</label>
-      <input type="text" class="gf-form-input width-12" ng-model="ctrl.panel.postfix" ng-change="ctrl.render()" ng-model-onblur>
-      <label class="gf-form-label width-6">Font size</label>
-      <div class="gf-form-select-wrapper">
-        <select class="input-small gf-form-input" ng-model="ctrl.panel.postfixFontSize" ng-options="f for f in ctrl.fontSizes" ng-change="ctrl.render()" ng-disabled="!ctrl.canModifyText()"></select>
-      </div>
-    </div> -->
     <div class="gf-form">
       <label class="gf-form-label width-6">Unit</label>
       <div class="gf-form-dropdown-typeahead width-18" ng-model="ctrl.panel.format" dropdown-typeahead2="ctrl.unitFormats" dropdown-typeahead-on-select="ctrl.setUnitFormat($subItem)"></div>
@@ -77,13 +58,9 @@ SOFTWARE. -->
   <div class="section gf-form-group">
     <h5 class="section-heading">Coloring</h5>
     <div class="gf-form-inline">
-      <gf-form-switch class="gf-form" label-class="width-8" label="Background" checked="ctrl.panel.colorBackground" on-change="ctrl.render()"></gf-form-switch>
+      <!-- <gf-form-switch class="gf-form" label-class="width-8" label="Background" checked="ctrl.panel.colorBackground" on-change="ctrl.render()"></gf-form-switch> -->
       <gf-form-switch class="gf-form" label-class="width-6" label="Value" checked="ctrl.panel.colorValue" on-change="ctrl.render()"></gf-form-switch>
     </div>
-    <!-- <div class="gf-form-inline">
-      <gf-form-switch class="gf-form" label-class="width-8" label="Prefix" checked="ctrl.panel.colorPrefix" on-change="ctrl.render()" ng-disabled="!ctrl.canModifyText()"></gf-form-switch>
-      <gf-form-switch class="gf-form" label-class="width-6" label="Postfix" checked="ctrl.panel.colorPostfix" on-change="ctrl.render()" ng-disabled="!ctrl.canModifyText()"></gf-form-switch>
-    </div> -->
     <div class="gf-form-inline">
       <div class="gf-form max-width-21">
         <label class="gf-form-label width-8">Thresholds
