@@ -133,9 +133,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
     this.onSparklineFillChange = this.onSparklineFillChange.bind(this);
 
     
-
     // Insert logo
-
     //Create the element
     let image = new Image(75);
     // Import the image
@@ -154,7 +152,6 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
       image.style.transform = "translateY(-35px)";
     };
-
     // Here we create the logo in the panel
     const panelContents = document.getElementsByClassName("panel-content");
     for (let i = 0; i < panelContents.length; i++) {
@@ -166,7 +163,6 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       // Here I change the background color and add the logo.
       panelContents.item(i).style.backgroundColor = "#000";
       panelContents.item(i).appendChild(image);
-    
     }
   }
 
@@ -723,10 +719,22 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       //   // // // // Drawing and updating the chart
       let gaugeChart = GaugeChart.gaugeChart(element, height > width? width:height, gaugeOptions);
 
-                  // elem.append(plotCanvas);
+      // elem.append(plotCanvas);
       elem.append(element);
 
+       //Insertion of the text above the Gauge
+      let textInsertion = document.createElement('div');
+      textInsertion.id = '#textInsertion';
+      textInsertion.style.textAlign = 'center';
+      textInsertion.style.transform = "translateY(-45px)";
+      textInsertion.style.fontFamily = "Consolas";
+      textInsertion.style.fontSize = panel.gauge.fontSizeText + 'px';
+      textInsertion.style.color = "#fff";
+      textInsertion.textContent = panel.gauge.textInsertion;
+      element.append(textInsertion); 
      }
+
+    
 
     function addSparkline() {
       const width = elem.width() + 20;
