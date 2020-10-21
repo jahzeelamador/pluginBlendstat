@@ -680,12 +680,12 @@ class BlendStatCtrl extends MetricsPanelCtrl {
         color: data.colorMap[data.colorMap.length - 1],
       });
 
-      //Se crea el nuevo gauge
+      //Create the new gauge
       let element = document.createElement('div');
       element.id = '#gaugeArea';
         // Element inside which you want to see the chart
       let needleValue = parseFloat(getValueText());
-      //   //Properties of the gauge
+      //   Properties of the gauge
       let gaugeOptions = {
         // needle options
         hasNeedle: true,
@@ -695,7 +695,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
         needleUpdateSpeed: 100,
         needleValue: (needleValue / panel.gauge.maxValue) * 100,
         // arc options
-        arcColors: [...panel.colors], // sirve para los colores de los threshold y si quiero los que viene por default lo dejo en blanco
+        arcColors: [...panel.colors], // Here we match the threshold colors; green, red and orange. 
         arcDelimiters: [...panel.thresholds.trim().split(",").map(parseFloat).filter(item => item > 0)].map((threshold) => {
           console.log(threshold);
           threshold = parseFloat(threshold);
@@ -704,25 +704,25 @@ class BlendStatCtrl extends MetricsPanelCtrl {
         }),
         arcPadding: 6,
         arcPaddingColor: '#000',
-        arcLabels: data.thresholds, //Solo llega hasta 100
+        arcLabels: data.thresholds, //the limit is 100
         arcLabelFontSize: true,
         arcOverEffect: true,
         //arcOverEffect: false,
         // label options
         rangeLabel: [panel.gauge.minValue + '', panel.gauge.maxValue + ''],
-        centralLabel: data.valueFormatted + '',  //Comentandolo se agrega la ajuga de en medio
+        centralLabel: data.valueFormatted + '',  //If you coment this line, appears the needle instead of the numbers value.
         rangeLabelFontSize: panel.gauge.fontSize,
         labelsFont: 'Consolas',
         color: 'white',
       }
       
-      //   // // // // Drawing and updating the chart
+      //   // // // // Drawing and updating the chart and add the Gauge in the panel
       let gaugeChart = GaugeChart.gaugeChart(element, height > width? width:height, gaugeOptions);
 
       // elem.append(plotCanvas);
       elem.append(element);
 
-       //Insertion of the text above the Gauge
+       //Insertion of the text bellow the Gauge
       let textInsertion = document.createElement('div');
       textInsertion.id = '#textInsertion';
       textInsertion.style.textAlign = 'center';
@@ -733,9 +733,7 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       textInsertion.textContent = panel.gauge.textInsertion;
       element.append(textInsertion); 
      }
-
     
-
     function addSparkline() {
       const width = elem.width() + 20;
       if (width < 30) {
