@@ -27,6 +27,7 @@ import "./lib/flot/jquery.flot.gauge";
 import "jquery.flot.time";
 import "jquery.flot.crosshair";
 
+
 import _ from "lodash";
 import $ from "jquery";
 // import 'vendor/flot/jquery.flot';
@@ -132,38 +133,6 @@ class BlendStatCtrl extends MetricsPanelCtrl {
     this.onSparklineColorChange = this.onSparklineColorChange.bind(this);
     this.onSparklineFillChange = this.onSparklineFillChange.bind(this);
 
-    
-    // Insert logo
-    //Create the element
-    let image = new Image(75);
-    // Import the image
-    image.src =
-      "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
-    // To fix the logo position in the panel
-    image.style.transform = "translateY(-35px)";
-    image.id = "logo";
-    image.onmouseover = () => {
-      image.src =
-        "https://static.cinepolis.com/img/lg-cinepolis-new.png";
-        image.style.transform = "translateY(-25px)";
-    };
-    image.onmouseleave = () => {
-      image.src =
-      "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
-      image.style.transform = "translateY(-35px)";
-    };
-    // Here we create the logo in the panel
-    const panelContents = document.getElementsByClassName("panel-content");
-    for (let i = 0; i < panelContents.length; i++) {
-      if (document.getElementById("logo")) {
-        document
-          .getElementById("logo")
-          .parentElement.removeChild(document.getElementById("logo"));
-      }
-      // Here I change the background color and add the logo.
-      panelContents.item(i).style.backgroundColor = "#000";
-      panelContents.item(i).appendChild(image);
-    }
   }
 
   onInitEditMode() {
@@ -196,6 +165,8 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       4
     );
     this.unitFormats = kbn.getUnitFormats();
+
+
   }
 
   setUnitFormat(subItem) {
@@ -724,14 +695,16 @@ class BlendStatCtrl extends MetricsPanelCtrl {
 
        //Insertion of the text bellow the Gauge
       let textInsertion = document.createElement('div');
-      textInsertion.id = '#textInsertion';
+      textInsertion.id = 'textInsertion';
       textInsertion.style.textAlign = 'center';
       textInsertion.style.transform = "translateY(-45px)";
       textInsertion.style.fontFamily = "Consolas";
-      textInsertion.style.fontSize = panel.gauge.fontSizeText + 'px';
+      // Here you make responsive the text
+      textInsertion.style.fontSize = (((element.offsetWidth / 20) / 16) * (panel.gauge.fontSizeText ? panel.gauge.fontSizeText : 18)) + "px" // panel.gauge.fontSizeText + 'px';
       textInsertion.style.color = "#fff";
       textInsertion.textContent = panel.gauge.textInsertion;
       element.append(textInsertion); 
+       
      }
     
     function addSparkline() {
@@ -826,6 +799,57 @@ class BlendStatCtrl extends MetricsPanelCtrl {
       }
 
       elem.html(body);
+
+    // Insert logo
+    //Create the element
+    let image = new Image(75);
+    // Import the image
+    image.src =
+      "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
+    // To fix the logo position in the panel
+    image.style.opacity = "0.7";
+    image.style.width = "7%";
+    image.style.position = "absolute";
+    image.style.display = "block";
+    image.style.left = "1%";
+    image.style.bottom = "2%";
+
+    // Logo cinepolis.
+    image.id = "logo";
+    image.onmouseover = () => {
+      image.src =
+        "https://static.cinepolis.com/img/lg-cinepolis-new.png";
+        image.style.opacity = "0.7";
+        image.style.width = "7%";
+        image.style.position = "absolute";
+        image.style.display = "block";
+        image.style.left = "1%";
+        image.style.bottom = "2%";
+    };
+    image.onmouseleave = () => {
+      image.src =
+      "https://www.softtek.com/images/content/design2015/LogoCompleto-Website-20.png";
+      image.style.opacity = "0.7";
+      image.style.width = "7%";
+      image.style.position = "absolute";
+      image.style.display = "block";
+      image.style.left = "1%";
+      image.style.bottom = "2%";
+    };
+    // Here we create the logo in the panel
+    const panelContents = document.getElementsByClassName("singlestat-panel");
+    for (let i = 0; i < panelContents.length; i++) {
+      if (document.getElementById("logo")) {
+        document
+          .getElementById("logo")
+          .parentElement.removeChild(document.getElementById("logo"));
+      }
+      // Here I change the background color and add the logo.
+      panelContents.item(i).style.backgroundColor = "#000";
+      panelContents.item(i).appendChild(image);
+    }
+
+
 
       if (panel.sparkline.show) {
         addSparkline();
